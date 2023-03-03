@@ -32,7 +32,7 @@ class Channel:
 
 	@property
 	def subscribers_count(self):
-		return self.channel_info()['items'][0]['statistics']['subscriberCount']
+		return int(self.channel_info()['items'][0]['statistics']['subscriberCount'])
 
 	@property
 	def video_count(self):
@@ -48,3 +48,14 @@ class Channel:
 			for line in info:
 				file.write(line)
 
+	def __gt__(self, other):
+		return self.subscribers_count > other.subscribers_count
+
+	def __lt__(self, other):
+		return self.subscribers_count < other.subscribers_count
+
+	def __add__(self, other):
+		return self.subscribers_count + other.subscribers_count
+
+	def __repr__(self):
+		return f'Youtube-канал: {self.title}'
