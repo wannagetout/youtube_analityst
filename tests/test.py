@@ -1,4 +1,5 @@
 from channel import Channel
+from video import Video, PLVideo
 
 
 channel_id_1 = 'UCMCgOm8GZkHp8zJ6l7_hIuA'
@@ -18,3 +19,14 @@ def test_less_than():
 
 def test_add():
 	assert (ch1 + ch2) == ch1.subscribers_count + ch2.subscribers_count
+
+
+def test_video():
+	video = Video('BBotskuyw_M')
+	assert video.title == 'Пушкин: наше все?'
+
+
+def test_pl_video():
+	pl_video = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
+	assert pl_video.title == 'Пушкин: наше все?'
+	assert pl_video.pl_title == 'Литература'
