@@ -1,5 +1,5 @@
 from channel import Channel
-from video import Video, PLVideo
+from video import Video, PLVideo, Playlist
 
 
 channel_id_1 = 'UCMCgOm8GZkHp8zJ6l7_hIuA'
@@ -30,3 +30,7 @@ def test_pl_video():
 	pl_video = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
 	assert pl_video.title == 'Пушкин: наше все?'
 	assert pl_video.pl_title == 'Литература'
+def test_Playlist():
+	pl = Playlist('PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
+	assert pl.url == 'https://www.youtube.com/playlist?list=PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD'
+	assert pl.show_best_video() == 'https://youtu.be/1ot9xIG9lKc'

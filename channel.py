@@ -1,9 +1,10 @@
 import json
 
+from mixin import MixinYT
 from utils import api_client
 
 
-class Channel:
+class Channel(MixinYT):
 
 	def __init__(self, id_: object):
 		self.__id_ = id_
@@ -13,10 +14,6 @@ class Channel:
 		channel = client.channels().list(id=self.__id_, part='snippet, statistics').execute()
 		channel = json.dumps(channel, indent=2, ensure_ascii=False)
 		return json.loads(channel)
-
-	@staticmethod
-	def get_service():
-		return api_client()
 
 	@property
 	def title(self):
